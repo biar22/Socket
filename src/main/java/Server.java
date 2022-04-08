@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// link google documenti https://docs.google.com/document/d/14p1swf3fdv6j_qFKLwvQyYl-6aWkqWIe9vS_GoHxQVc/edit
+
 public class Server {
     
     public static void main(String[] args){
@@ -28,18 +30,16 @@ public class Server {
          System.out.println("3) CONNESSIONE AVVENUTA \n");
          
          
-         //connessione unicast
+         //connessione 
          serverSocket.close();
-                 
-             //stream di scrittura del socket
+                              
              out= new DataOutputStream( socket.getOutputStream());
              
-             //stream di scrittura del socket
             in= new BufferedReader( new InputStreamReader(socket.getInputStream()));
             
-            String messaggioBenevnuto="ciao";
-         out.writeBytes(messaggioBenevnuto+"\r\n");
-              System.out.println("4) INVIO MESSAGGIO DI BENVENUTO \n");
+            String messaggioBen="ciao";
+         out.writeBytes(messaggioBen+"\r\n");
+              //INVIO MESSAGGIO DI BENVENUTO
             out.flush();
             
                 
