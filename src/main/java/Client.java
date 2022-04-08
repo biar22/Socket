@@ -21,7 +21,7 @@ public class Client {
     public static void main(String[] args){
         
         try {
-          DataOutputStream out;
+          BufferedWriter out;
           BufferedReader in;
             
                          
@@ -29,26 +29,26 @@ public class Client {
              //RICHIESTA CONNESSIONE DEL CLIENT IN CORSO
         // 
              
-             out= new DataOutputStream( client.getOutputStream());
+             out= new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
              
              
             in= new BufferedReader( new InputStreamReader(client.getInputStream()));
             
             String stringaRicevuta;
             stringaRicevuta=in.readLine();
-                      System.out.println("5) MESSAGGIO DEL SERVER: " +stringaRicevuta+"\n");
+            System.out.println("MESSAGGIO SERVER: " +stringaRicevuta+"\n");
                       
-                    String messaggioBenevnuto="MI DAI DATA E ORA?";
-         out.writeBytes(messaggioBenevnuto+"\r\n");
+            String messaggioBenevnuto="MI DAI DATA E ORA?";
+            out.write(messaggioBenevnuto+"\r\n");
               //richiesta data e ora
-              out.flush();
+            out.flush();
             
             stringaRicevuta=in.readLine();
-                      System.out.println("9) LA DATA RICEVUTA E': " +stringaRicevuta+"\n");
+            System.out.println("LA DATA RICEVUTA E': " +stringaRicevuta+"\n");
               
               
-                client.close();
-                //CONNESSIONE TERMINATA 
+            client.close();
+            //CONNESSIONE TERMINATA 
         }
        
         
