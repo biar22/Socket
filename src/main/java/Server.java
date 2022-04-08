@@ -18,47 +18,47 @@ public class Server {
 
         try {
           
-               DataOutputStream out;
-          BufferedReader in;
+        BufferedWriter out;
+        BufferedReader in;
           
        ServerSocket serverSocket = new ServerSocket(2000);
        
-  System.out.println("1) SERVER AVVIATO CORRETTAMEMTE \n");
+        System.out.println("SERVER AVVIATO CORRETTAMEMTE \n");
              // 
              
-       Socket socket=serverSocket.accept();
-         System.out.println("3) CONNESSIONE AVVENUTA \n");
+        Socket socket=serverSocket.accept();
+         System.out.println("CONNESSO CON SUCCESSO \n");
          
          
          //connessione 
          serverSocket.close();
                               
-             out= new DataOutputStream( socket.getOutputStream());
+             out= new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
              
             in= new BufferedReader( new InputStreamReader(socket.getInputStream()));
             
-            String messaggioBen="ciao";
-         out.writeBytes(messaggioBen+"\r\n");
+            String messaggioBen="prova";
+         out.write(messaggioBen+"\r\n");
               //INVIO MESSAGGIO DI BENVENUTO
             out.flush();
             
                 
             String stringaRicevuta;
             stringaRicevuta=in.readLine();
-                      System.out.println("7) LA RICHIESTA DEL CLIENT E': " +stringaRicevuta+"\n");
+            System.out.println("LA RICHIESTA DEL CLIENT E': " +stringaRicevuta+"\n");
                       
                       
                       
-                      SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss");
-        String timeStamp = date.format(new Date());
+            SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss");
+            String timeStamp = date.format(new Date());
                    
-         out.writeBytes(timeStamp+"\r\n");
-              System.out.println("8) INVIO DATA E ORA \n");
+         out.write(timeStamp+"\r\n");
+              System.out.println("INVIO DATA E ORA \n");
             out.flush();
               
         
          socket.close();
-           System.out.println("11)CONNESSIONE TERMINATA \n");
+           System.out.println("CONNESSIONE TERMINATA \n");
     }
         catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
