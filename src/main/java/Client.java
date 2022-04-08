@@ -14,6 +14,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// link google documenti https://docs.google.com/document/d/14p1swf3fdv6j_qFKLwvQyYl-6aWkqWIe9vS_GoHxQVc/edit
 
 public class Client {
     
@@ -25,12 +26,12 @@ public class Client {
             
                          
             Socket client = new Socket(InetAddress.getLocalHost(),2000);
-             System.out.println(" 2) RICHIESTA CONNESSIONE DEL CLIENT IN CORSO \n");
+             //RICHIESTA CONNESSIONE DEL CLIENT IN CORSO
         // 
-             //stream di scrittura del socket
+             
              out= new DataOutputStream( client.getOutputStream());
              
-             //stream di scrittura del socket
+             
             in= new BufferedReader( new InputStreamReader(client.getInputStream()));
             
             String stringaRicevuta;
@@ -39,7 +40,7 @@ public class Client {
                       
                     String messaggioBenevnuto="MI DAI DATA E ORA?";
          out.writeBytes(messaggioBenevnuto+"\r\n");
-              System.out.println("6) INVIO RICHIEsta data e ora \n");
+              //richiesta data e ora
               out.flush();
             
             stringaRicevuta=in.readLine();
@@ -47,7 +48,7 @@ public class Client {
               
               
                 client.close();
-                System.out.println("10)CONNESSIONE TERMINATA \n");
+                //CONNESSIONE TERMINATA 
         }
        
         
